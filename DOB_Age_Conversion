@@ -17,3 +17,17 @@ def from_dob_age(dob):
     dob = datetime.datetime.strptime(dob, '%d-%m-%Y')
     today = datetime.date.today()
     return today.year - dob.year - ((today.month, today.day) < (dob.month, dob.day))
+
+
+# get two dates and calculate the no of days between them.
+
+date1=input("Enter date1")
+date2=input("Enter date2")
+
+def no_days(date1,date2):
+    #strptime split date based on below format
+    d1 = datetime.datetime.strptime(date1, '%d-%m-%Y')
+    d2 = datetime.datetime.strptime(date2, '%d-%m-%Y')
+    return abs(d2-d1)
+    
+no_days(date1,date2)
