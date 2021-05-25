@@ -1,0 +1,19 @@
+#Getting DOB from a given file, calculating and adding the age as new column in different file 
+
+import pandas as pd
+import timedate
+
+#To read a file
+a=pd.read_csv(r"C:\\Users\\Mani\\OneDrive\\Documents\\Manivel\\HCL\\python430\\product.csv")
+df=pd.DataFrame(a)
+df["age"]=df['dob'].apply(lambda x: from_dob_age(x))
+#To write a file
+df.to_csv(r"C:\\Users\\Mani\\OneDrive\\Documents\\Manivel\\HCL\\python430\\result.csv")
+
+
+
+def from_dob_age(dob):
+    #strptime split date based on below format
+    dob = datetime.datetime.strptime(dob, '%d-%m-%Y')
+    today = datetime.date.today()
+    return today.year - dob.year - ((today.month, today.day) < (dob.month, dob.day))
